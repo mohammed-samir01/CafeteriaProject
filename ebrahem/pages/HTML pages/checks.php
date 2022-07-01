@@ -116,6 +116,10 @@
            
            <div class="container">
                 <?php
+                
+                
+                // header('Content-Type: application/json');
+
                     //data for connection
                     $servername = "localhost";
                     $username = "root";
@@ -132,6 +136,9 @@
                     $stm->execute();
                     $stm->setFetchMode(PDO::FETCH_ASSOC);   //delete the repeat
                     $users = $stm->fetchAll();   //get array form pdo object
+                    $jUsers = json_encode($users);
+                    $jFile = fopen("user.json", "w");
+                    fwrite($jFile,$jUsers);
                     
                     // var_dump($users);
 
@@ -166,7 +173,7 @@
                 </select>
 
                 <!-- select user -->
-                <select name="user">
+                <select name="userSelect" class="userSelect">
                     <option disabled selected> User</option>
                     <?php 
                         foreach ($users as $user) {
@@ -182,17 +189,21 @@
 
 
                 <!-- users table -->
-            
-                <table class="table table-striped table-dark mt-2 user">
+                          <br>  <br>
+                          
+                          <label> user table </label>
+                <table class="table table-striped table-dark mt-2 userTable">
 
                     
                         <tr>
-                            <th scope="col">ID</th>
+                            
                             <th scope="col">name</th>
-                            <th scope="col">total amount</th>
+                           
                         </tr>
 
                 </table>
+
+               
 
            </div>
 
@@ -238,48 +249,52 @@
             <script src="../../assets/dist/js/demo.js"></script>
             <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
             <script src="../../assets/dist/js/pages/dashboard.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 
 
-            <script >
+
+
+        <script >
+
+           $(document).ready(function(){
+
+                   $.ajax({
+
+                           url: "user.json",
+                           type : 'get',
+                           success: function(data){
+                               //first select
+                               $.each(data,function(key,value){
+                                   $(".userTable").append("<tr>"+"<td>"+value['name']+"</td>"+"</tr>");
+                                   
+                                                    
+                               });
+
+                               $(".userSelect").change(function(){
+                                   let selectedElement = $(".userSelect ").find(":selected").val();
+                                   $(".userTable").empty();
+                                   $(".userTable").append("<tr>"+"<td>"+selectedElement+"</td>"+"</tr>");
+                                // $(".test").append(selectedElement);
+                                
+                               })
+
+                             
+
+                               
+                           }
+
+                   })
+
+           });
+
+       </script>
            
 
                 
            
 
-                $(document).ready(function(){
-    
-                        $.ajax({
-    
-                                url: "#",
-                                type : 'get',
-                                success: function(data){
-                                    //first select
-                                    $.each(data,function(key,value){
-                                        $(".user").append("<tr> <td>"+value+"</td> </tr>");
-                                    });
-                                }})})
-    
-                                    
-                //                     // //second select
-                //                     // $(".parent").change(function(){
-                //                     //     let selectedElement = $(".parent ").find(":selected").val();
-                //                     //     $(".children").empty();
-                //                     //     $(".children").append("<option >ITEMS</option>");
-                //                     //     $.each(data[selectedElement] ,function(index,value){
-                //                     //       $(".children").append("<option value="+value.value +">"+ value.name+"</option>");
-                //                     //     })
-    
-                //                     // })
-    
-                                    
-                //                 }
-    
-                //         })
-    
-                // });
-    
-            </script>
+               
     
 </body>
 
