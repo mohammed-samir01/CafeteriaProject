@@ -1,0 +1,43 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: capitalize;
+    box-sizing: border-box;
+    color: white;
+}
+
+main {
+    width: 400px;
+    padding: 1em;
+    margin: 5em auto;
+    text-align: center;
+    background-color:rgb(255, 147, 108);
+}
+
+input {
+    width: 100%;
+    color: black;
+}
+
+.radio div {
+    display: inline-block;
+    width: 40%;
+}
+.radio input {
+    width: 10%;
+}
+
+.submit {
+    height: 2em;
+    background-color: white;
+    color: rgb(255, 147, 108);
+    border-color: white;
+    font-size: large;
+}
+.submit:hover {
+    background-color:rgb(255, 147, 108);
+    color: white;
+}
+
+a {
+    text-decoration: none;
+}

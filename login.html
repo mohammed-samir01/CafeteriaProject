@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>login</title>
+</head>
+<body>
+    <main>
+        <h1>cafeteria</h1>
+    <form action="verifying.php" method="POST">
+        <div class="radio">
+            <div>
+                <input type="radio" name="radio" value="admin" id="admin" required>
+                <label for="admin">admin</label>
+            </div>
+            <div>
+                <input type="radio" name="radio" value="user" id="user" required> 
+                <label for="user">user</label>
+            </div>
+        </div>
+        <br>
+        <div class="email">
+            <label for="email">email</label>
+            <input type="email" name="email" id="email" placeholder="enter your email" required autofocus>
+        </div>
+        <br>
+        <div class="pass">
+            <label for="pass">password</label>
+            <input type="password" name="pass" id="pass" placeholder="enter your password" required minlength="6" maxlength="12">
+        </div>
+        <br>
+        <br>
+        <input class="submit" type="submit" value="login">
+        <br>
+        <br>
+        <a href="forgot.php">forgot password</a>
+    </form>
+    </main>
+</body>
+</html>
