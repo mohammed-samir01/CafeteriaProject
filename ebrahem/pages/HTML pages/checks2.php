@@ -114,12 +114,9 @@
               
             </div>
            
+
            <div class="container">
                 <?php
-                
-                
-                // header('Content-Type: application/json');
-
                     //data for connection
                     $servername = "localhost";
                     $username = "root";
@@ -131,29 +128,15 @@
                     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
                     //select user name from users table
-                    $sql = "select id, name from users ";
+                    $sql = "select name,id from users ";
                     $stm = $conn->prepare($sql);
                     $stm->execute();
                     $stm->setFetchMode(PDO::FETCH_ASSOC);   //delete the repeat
                     $users = $stm->fetchAll();   //get array form pdo object
-                    $jUsers = json_encode($users);
-                    $jFile = fopen("user.json", "w");
-                    fwrite($jFile,$jUsers);
+                    // $jUsers = json_encode($users);
+                    // $jFile = fopen("user.json", "w");
+                    // fwrite($jFile,$jUsers);
                     
-                    // var_dump($users);
-
-
-                    //select order dates
-                    $sql = "select created_at from orders ";
-                    $stm = $conn->prepare($sql);
-                    $stm->execute();
-                    $stm->setFetchMode(PDO::FETCH_ASSOC);   //delete the repeat
-                    $dates = $stm->fetchAll();   //get array form pdo object
-                    $jDates = json_encode($dates);
-                    $jFile = fopen("order.json", "w");
-                    fwrite($jFile,$jDates);
-
-
                     //select date from order table
                     $sql = "select created_at from orders";
                     $stm = $conn->prepare($sql);
@@ -164,85 +147,111 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                <form action="check3.php" method="get">
                 <!-- date from -->
-                <select name="dateFrom">
-                    <option disabled selected> date from</option>
-                    <?php 
-                        foreach ($dates as $date) {
-                            echo "<option value=".$date['created_at'].">".$date['created_at']."</option>";
-                          }
-                    ?>
-                </select>
-        
+                    <select name="dateFrom">
+                        <option disabled selected> date from</option>
+                        <?php 
+                            foreach ($dates as $date) {
+                                echo "<option value=".$date['created_at'].">".$date['created_at']."</option>";
+                            }
+                        ?>
+                    </select>
+            
 
 
-                <!-- date to -->
-                <select name="dateTo">
-                    <option disabled selected> date to</option>
-                    <?php 
-                        foreach ($dates as $date) {
-                            echo "<option value=".$date['created_at'].">".$date['created_at']."</option>";
-                          }
-                    ?>
-                </select>
+                    <!-- date to -->
+                    <select name="dateTo">
+                        <option disabled selected> date to</option>
+                        <?php 
+                            foreach ($dates as $date) {
+                                echo "<option value=".$date['created_at'].">".$date['created_at']."</option>";
+                            }
+                        ?>
+                    </select>
 
-                <!-- select user -->
-                <select name="userSelect" class="userSelect">
-                    <option disabled selected> User</option>
-                    <?php 
-                        foreach ($users as $user) {
-                            echo "<option value=".$user['name'].">".$user['name']."</option>";
-                          }
-                    ?>
 
+                    <!-- select user -->
+                    <select name="userSelect" class="userSelect">
+                        <option disabled selected> User</option>
+                        <?php 
+                            foreach ($users as $user) {
+                                echo "<option value=".$user['id'].">".$user['name']."</option>";
+                            }
+                        ?> 
+                    </select>
+
+                    <input type="submit" value="filter">
                     
-                </select>
-                
-                
-
-
+                </form>
                 <br>  <br>
 
 
-                <!-- users table -->
-                <label> user table </label>
-                <table class="table table-striped table-dark mt-2 userTable">
 
+
+
+
+                <!-- ERROR CHECK -->
+                <h4> 
+                    <?php if(isset($_GET['error'])){
+                            echo $_GET['error'];
+                           }
+                    ?>
+                </h4>
                     
-                        <tr>
+
+
+                    <!-- users table -->
+                    <label> user table </label>
+                    <table class="table table-striped table-dark mt-2 ">
                             
-                            <th scope="col">name</th>
-                           
-                        </tr>
+                                
+                             <thead scope="col"> 
+                                    <tr>
+                                         <td> 
+                                             Name 
+                                         </td> 
+                                    <tr>
 
-                </table>
+                                </thead>
 
-
-                <label> orders table </label>
-                <table class="table table-striped table-dark mt-2 orderTable">
-
-                    
-                        <tr>
+                                <tbody class="userTable">
+                                    
+                                </tbody>
                             
-                            <th scope="col">orderDate</th>
-                           
-                        </tr>
+                            
+                    </table>
 
-                </table>
+                    <br> <br>
+
+
+                    <label> orders table </label>
+                    <table class="table table-striped table-dark mt-2 ">
+                            
+                                
+                                <thead scope="col"> 
+                                    <tr>
+                                         <td> 
+                                             Order date 
+                                         </td> 
+                                         <td> 
+                                             Order Client
+                                         </td> 
+
+                                    <tr>
+
+                                    
+
+                                </thead>
+
+                                <tbody class="orderTable">
+                                    
+                                </tbody>
+
+
+                            
+                            
+                    </table>
 
 
                
@@ -251,6 +260,8 @@
 
 
 
+
+           
 
 
 
@@ -296,7 +307,6 @@
 
 
 
-
         <script >
 
            $(document).ready(function(){
@@ -306,43 +316,27 @@
                            url: "user.json",
                            type : 'get',
                            success: function(data){
-
-                            //    $.each(data,function(key,value){
-                            //        $(".userTable").append("<tr>"+"<td>"+value['name']+"</td>"+"</tr>");          
-                            //    });
-
-
-
-                               $(".userSelect").change(function(){
-
-                                   //first table
-                                   let selectedElement = $(".userSelect ").find(":selected").val();
-                                   $(".userTable").empty();
-                                   $(".userTable").append("<tr>"+"<td>"+selectedElement+"</td>"+"</tr>");
-
-
+                               $(".userTable").empty();
+                               $.each(data,function(key,value){
                                    
-                                    //second table
-                                    $.ajax({
-                                        url: "order.json",
-                                        type : 'get',
-                                        success: function(data){
-                                            $(".orderTable").empty();
-                                            $.each(data,function(key,value){
-                                                    $(".orderTable").append("<tr>"+"<td>"+value['created_at']+"</td>"+"</tr>");
-                                            });
-                                        }
-                                  
-                                
-                                    })
-                                })
-                            }
-                    })
-            });
+                                   $(".userTable").append("<tr>"+"<td>"+value['name']+"</td>"+"</tr>");
+                                   $(".orderTable").append("<tr>"+"<td>"+value['created_at']+"</td>"+"<td>"+ value['name']+"</td>"+"</tr>");
+                                   
+                                                    
+                               });
 
+                               
+
+                            }    
+                    });       
+
+
+
+
+                  
+
+        });
        </script>
-           
-
                 
            
 
