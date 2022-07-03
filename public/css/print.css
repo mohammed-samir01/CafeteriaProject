@@ -1,0 +1,11 @@
+@media screen and (max-width:480px)  {
+   
+    #tbl tr th , td{ 
+        text-align: left;
+        font-size: .7em;
+    }
+    #tbl tr .disapper{
+        display: none;
+    }
+
+}
