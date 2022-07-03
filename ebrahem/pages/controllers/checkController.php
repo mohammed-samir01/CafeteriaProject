@@ -10,7 +10,7 @@
     if(!isset($_GET['userSelect']) && !isset($_GET['dateFrom']) && !isset($_GET['dateTo'])){
         $error = 'ERROR: You did not select date or user';
         file_put_contents("user.json", "");
-        header("location:checks2.php?error=".$error);
+        header("location:../views/checks.php?error=".$error);
     }
 
 
@@ -18,7 +18,7 @@
     if(!isset($_GET['userSelect']) && isset($_GET['dateFrom']) && !isset($_GET['dateTo'])){
         $error = 'ERROR: Please select date from and date to ';
         file_put_contents("user.json", "");
-        header("location:checks2.php?error=".$error);
+        header("location:../views/checks.php?error=".$error);
     }
 
 
@@ -26,14 +26,14 @@
     if(!isset($_GET['userSelect']) && !isset($_GET['dateFrom']) && isset($_GET['dateTo'])){
         $error = 'ERROR: select date from and date to ';
         file_put_contents("user.json", "");
-        header("location:checks2.php?error=".$error);
+        header("location:../views/checks.php?error=".$error);
     }
 
     //error4
     if(isset($_GET['userSelect']) && !isset($_GET['dateFrom']) && isset($_GET['dateTo'])){
         $error = 'ERROR: Please select date from and date to ';
         file_put_contents("user.json", "");
-        header("location:checks2.php?error=".$error);
+        header("location:../views/checks.php?error=".$error);
     }
 
 
@@ -41,7 +41,7 @@
     if(isset($_GET['userSelect']) && isset($_GET['dateFrom']) && !isset($_GET['dateTo'])){
         $error = 'ERROR: Please select date from and date to ';
         file_put_contents("user.json", "");
-        header("location:checks2.php?error=".$error);
+        header("location:../views/checks.php?error=".$error);
     }
 
 
@@ -53,15 +53,16 @@
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         //get the selected user
-        $sql = "SELECT  users.name , orders.created_at from users , orders where users.id = orders.id_users AND created_at BETWEEN '{$_GET['dateFrom']}' AND '{$_GET['dateTo']}'";
+        $sql = "select orders.created_at , users.name , product_orders.quantity*products.price as TOTAL from orders ,users , product_orders, products  where users.id = orders.id_users AND products.id = product_orders.id_products AND orders.id = product_orders.id_orders  AND created_at BETWEEN '{$_GET['dateFrom']}' AND '{$_GET['dateTo']}'";
         $stm = $conn->prepare($sql);
         $stm->execute();
         $stm->setFetchMode(PDO::FETCH_ASSOC);   //delete the repeat
         $users = $stm->fetchAll();
+        // var_dump($_GET['dateFrom']);
         $jUsers = json_encode($users);
         $jFile = fopen("user.json", "w");
         fwrite($jFile,$jUsers);
-        header("location:checks2.php");
+        header("location:../views/checks.php");
         // var_dump($users[0]['name']);
 
         
@@ -109,7 +110,7 @@
 
         
        // //get the orders of the user
-        $sql = "select orders.created_at , users.name from orders ,users  where users.id = orders.id_users AND orders.id_users = {$_GET['userSelect']}";
+        $sql = "select orders.created_at , users.name , product_orders.quantity*products.price as TOTAL from orders ,users , product_orders, products  where users.id = orders.id_users AND products.id = product_orders.id_products AND orders.id = product_orders.id_orders  AND orders.id_users = {$_GET['userSelect']}";
         $stm = $conn->prepare($sql);
         $stm->execute();
         $stm->setFetchMode(PDO::FETCH_ASSOC);   //delete the repeat
@@ -117,7 +118,7 @@
         $jUsers = json_encode($users);
         $jFile = fopen("user.json", "w");
         fwrite($jFile,$jUsers);
-        header("location:checks2.php");
+        header("location:../views/checks.php");
         // var_dump($orders[0]['created_at']);
 
 
@@ -157,7 +158,7 @@
 
         
        // //get the orders of the user
-        $sql = "select orders.created_at , users.name from orders , users where users.id = orders.id_users AND id_users = {$_GET['userSelect']} AND created_at BETWEEN '{$_GET['dateFrom']}' AND '{$_GET['dateTo']}'";
+        $sql = "select orders.created_at , users.name , product_orders.quantity*products.price as TOTAL from orders ,users , product_orders, products  where users.id = orders.id_users AND products.id = product_orders.id_products AND orders.id = product_orders.id_orders  AND id_users = {$_GET['userSelect']} AND created_at BETWEEN '{$_GET['dateFrom']}' AND '{$_GET['dateTo']}'";
         $stm = $conn->prepare($sql);
         $stm->execute();
         $stm->setFetchMode(PDO::FETCH_ASSOC);   //delete the repeat
@@ -165,7 +166,7 @@
         $jUsers = json_encode($users);
         $jFile = fopen("user.json", "w");
         fwrite($jFile,$jUsers);
-        header("location:checks2.php");
+        header("location:../views/checks.php");
         // var_dump($orders[0]['created_at']);
 
         //user

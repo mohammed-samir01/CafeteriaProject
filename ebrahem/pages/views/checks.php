@@ -77,7 +77,6 @@
                                 <i class="nav-icon fas fa-copy"></i>
                                 <p>
                                     Users
-                                    <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
                             </li>
@@ -138,36 +137,57 @@
                     // fwrite($jFile,$jUsers);
                     
                     //select date from order table
-                    $sql = "select created_at from orders";
-                    $stm = $conn->prepare($sql);
-                    $stm->execute();
-                    $stm->setFetchMode(PDO::FETCH_ASSOC);   //delete the repeat
-                    $dates = $stm->fetchAll();   //get array form pdo object
+                    // $sql = "select created_at from orders";
+                    // $stm = $conn->prepare($sql);
+                    // $stm->execute();
+                    // $stm->setFetchMode(PDO::FETCH_ASSOC);   //delete the repeat
+                    // $dates = $stm->fetchAll();   //get array form pdo object
                 ?>
 
 
 
-                <form action="check3.php" method="get">
-                <!-- date from -->
-                    <select name="dateFrom">
-                        <option disabled selected> date from</option>
-                        <?php 
-                            foreach ($dates as $date) {
-                                echo "<option value=".$date['created_at'].">".$date['created_at']."</option>";
-                            }
-                        ?>
-                    </select>
-            
+                <form action="../controllers/checkController.php" method="get">
 
+
+                    <!-- date from -->
+                    <!-- <input type="date" id="start" name="dateFrom"
+                        min="2022-07-01" max="2018-7-30"> -->
 
                     <!-- date to -->
+                    <!-- <input type="date" id="end" name="dateTo"
+                        min="2022-07-01" max="2018-7-30"> --> 
+
+
+
+                         <!-- date from -->
+                    <select name="dateFrom">
+                        <option disabled selected> date from</option>
+                        <option > 2022-07-01</option>
+                        <option > 2022-07-02</option>
+                        <option > 2022-07-03</option>
+                        <option > 2022-07-04</option>
+                        <option > 2022-07-05</option>
+                        <option > 2022-07-06</option>
+                        <option > 2022-07-07</option>
+                        <option > 2022-07-08</option>
+                        <option > 2022-07-09</option>
+                        <option > 2022-07-10</option>
+                    </select>
+
+                    
+                     <!-- date to -->
                     <select name="dateTo">
                         <option disabled selected> date to</option>
-                        <?php 
-                            foreach ($dates as $date) {
-                                echo "<option value=".$date['created_at'].">".$date['created_at']."</option>";
-                            }
-                        ?>
+                        <option > 2022-07-01</option>
+                        <option > 2022-07-02</option>
+                        <option > 2022-07-03</option>
+                        <option > 2022-07-04</option>
+                        <option > 2022-07-05</option>
+                        <option > 2022-07-06</option>
+                        <option > 2022-07-07</option>
+                        <option > 2022-07-08</option>
+                        <option > 2022-07-09</option>
+                        <option > 2022-07-10</option>
                     </select>
 
 
@@ -192,12 +212,12 @@
 
 
                 <!-- ERROR CHECK -->
-                <h4> 
+                <h3 style="color:red" > 
                     <?php if(isset($_GET['error'])){
                             echo $_GET['error'];
                            }
                     ?>
-                </h4>
+                </h3>
                     
 
 
@@ -236,6 +256,10 @@
                                          </td> 
                                          <td> 
                                              Order Client
+                                         </td> 
+
+                                         <td> 
+                                             Order Price
                                          </td> 
 
                                     <tr>
@@ -312,30 +336,19 @@
            $(document).ready(function(){
 
                    $.ajax({
-
-                           url: "user.json",
+                           url: "../controllers/user.json",
                            type : 'get',
                            success: function(data){
                                $(".userTable").empty();
                                $.each(data,function(key,value){
-                                   
                                    $(".userTable").append("<tr>"+"<td>"+value['name']+"</td>"+"</tr>");
-                                   $(".orderTable").append("<tr>"+"<td>"+value['created_at']+"</td>"+"<td>"+ value['name']+"</td>"+"</tr>");
-                                   
-                                                    
+                                   $(".orderTable").append("<tr>"+"<td>"+value['created_at']+"</td>"+"<td>"+ value['name']+"</td>"+"<td>"+ value['TOTAL']+"</td>"+"</tr>");
                                });
-
-                               
 
                             }    
                     });       
 
-
-
-
-                  
-
-        });
+            });
        </script>
                 
            
