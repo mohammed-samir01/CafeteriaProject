@@ -83,7 +83,7 @@
                             </li>
 
                             <li class="nav-item">
-                              <a href="checks.php" class="nav-link">
+                              <a href="checksAdmine.php" class="nav-link">
                                   <i class="nav-icon fas fa-copy"></i>
                                   <p>
                                       Checks

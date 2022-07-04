@@ -10,7 +10,7 @@
     if(!isset($_GET['userSelect']) && !isset($_GET['dateFrom']) && !isset($_GET['dateTo'])){
         $error = 'ERROR: You did not select date or user';
         file_put_contents("user.json", "");
-        header("location:../views/checks.php?error=".$error);
+        header("location:../../resources/views/checksAdmin.php?error=".$error);
     }
 
 
@@ -18,7 +18,7 @@
     if(!isset($_GET['userSelect']) && isset($_GET['dateFrom']) && !isset($_GET['dateTo'])){
         $error = 'ERROR: Please select date from and date to ';
         file_put_contents("user.json", "");
-        header("location:../views/checks.php?error=".$error);
+        header("location:../../resources/views/checksAdmin.php?error=".$error);
     }
 
 
@@ -26,14 +26,14 @@
     if(!isset($_GET['userSelect']) && !isset($_GET['dateFrom']) && isset($_GET['dateTo'])){
         $error = 'ERROR: select date from and date to ';
         file_put_contents("user.json", "");
-        header("location:../views/checks.php?error=".$error);
+        header("location:../../resources/views/checksAdmin.php?error=".$error);
     }
 
     //error4
     if(isset($_GET['userSelect']) && !isset($_GET['dateFrom']) && isset($_GET['dateTo'])){
         $error = 'ERROR: Please select date from and date to ';
         file_put_contents("user.json", "");
-        header("location:../views/checks.php?error=".$error);
+        header("location:../../resources/views/checksAdmin.php?error=".$error);
     }
 
 
@@ -41,7 +41,7 @@
     if(isset($_GET['userSelect']) && isset($_GET['dateFrom']) && !isset($_GET['dateTo'])){
         $error = 'ERROR: Please select date from and date to ';
         file_put_contents("user.json", "");
-        header("location:../views/checks.php?error=".$error);
+        header("location:../../resources/views/checksAdmin.php?error=".$error);
     }
 
 
@@ -62,7 +62,7 @@
         $jUsers = json_encode($users);
         $jFile = fopen("user.json", "w");
         fwrite($jFile,$jUsers);
-        header("location:../views/checks.php");
+        header("location:../../resources/views/checksAdmin.php");
         // var_dump($users[0]['name']);
 
         
@@ -118,7 +118,7 @@
         $jUsers = json_encode($users);
         $jFile = fopen("user.json", "w");
         fwrite($jFile,$jUsers);
-        header("location:../views/checks.php");
+        header("location:../../resources/views/checksAdmin.php");
         // var_dump($orders[0]['created_at']);
 
 
@@ -166,7 +166,7 @@
         $jUsers = json_encode($users);
         $jFile = fopen("user.json", "w");
         fwrite($jFile,$jUsers);
-        header("location:../views/checks.php");
+        header("location:../../resources/views/checksAdmin.php");
         // var_dump($orders[0]['created_at']);
 
         //user
