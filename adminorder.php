@@ -289,9 +289,9 @@
             </footer>
 
         </div>
-        <!-- ./wrapper -->
         <script>
-            
+            console.log(document.getElementsByClassName('p'));
+            console.log('salmgit a');
             function drop_products(e){
                 e.parentElement.parentElement.parentElement.remove();
 
