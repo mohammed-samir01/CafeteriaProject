@@ -2,9 +2,6 @@
     $email = $_POST['email'];
     $pass = $_POST['pass'];
     $radio = $_POST['radio'];
-    // echo "$email"."<br>";
-    // echo "$pass"."<br>";
-    // echo "$who"."<br>";
 
     $connection = new PDO ("mysql:host=localhost;dbname=cafeteria", "root", "");
     if ($radio == "admin") {
