@@ -260,7 +260,7 @@
                     
                     <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
                         <div class="col">TOTAL PRICE</div>
-                        <div class="col text-right">&euro; 137.00</div>
+                        <div class="col text-right">&euro; </div>
                     </div>
                     <button type="submit" class="btn bg-primary">ORDER</button>
                 </div>
@@ -291,10 +291,7 @@
         </div>
         <!-- ./wrapper -->
         <script>
-            /* function min_quantity(current){
-                console.log("i am here");
-                current.nextSibling.value-1;
-            } */
+            
             function drop_products(e){
                 e.parentElement.parentElement.parentElement.remove();
 

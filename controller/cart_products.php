@@ -21,7 +21,7 @@
                             <input type='number' name='product[{$k}]['quantity']' value='1' step='1' min='1' >
                             </div>
                             <form method='post' action='#'>
-                            <div class='col'>&euro; {$key['price']} <button type='button' class='close {$k}' onclick='drop_products(this);'>&#10005;</button></div></form>
+                            <div class='col'>&euro;<span class='p'> {$key['price']} </span><button type='button' class='close {$k}' onclick='drop_products(this);'>&#10005;</button></div></form>
                         </div>
                     </div>";}}; 
 ?>
