@@ -10,7 +10,7 @@ main {
     padding: 1em;
     margin: 5em auto;
     text-align: center;
-    background-color:rgb(255, 147, 108);
+    background-color: deepskyblue;
 }
 
 input {
@@ -29,12 +29,12 @@ input {
 .submit {
     height: 2em;
     background-color: white;
-    color: rgb(255, 147, 108);
+    color: deepskyblue;
     border-color: white;
     font-size: large;
 }
 .submit:hover {
-    background-color:rgb(255, 147, 108);
+    background-color: deepskyblue;
     color: white;
 }
 
