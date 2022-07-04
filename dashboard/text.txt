@@ -1,0 +1,79 @@
+// function getData($table,$condition=1){
+//     return $this->connection->query("SELECT products.name AS  products_name , products.image
+//      AS products_img from $table join products ON  products.id = product_orders.id_products ");
+// }
+
+// function getData($table,$condition=1){
+//     return $this->connection->query("SELECT  products.name AS  products_name,
+      //  products.price AS  products_price ,
+
+//     products.image  AS products_img , orders.created_at AS dte, product_orders.quantity AS quantity, orders.id_users AS user , sum(products.price) ,
+//      (SELECT users.name  from  orders join users  ON orders.id_users = users.id  ) as nm_user
+        // from $table
+//       join products ON  products.id = product_orders.id_products
+//       JOIN orders ON orders.id =  product_orders.id_orders
+//       GROUP BY product_orders.quantity
+//       ");
+// }
+
+// function getData($table,$condition=1){
+//     return $this->connection->query("SELECT orders.created_at AS dte
+//     , users.name AS user , users.id_room as room  , orders.ext as ext
+//     from $table
+//     join users  ON orders.id_users = users.id");
+// }
+
+// function getData($cols,$table,$jointab ,$condition){
+//   return $this->connection->query("SELECT $cols
+//   from $table
+//   join $jointab  ON $condition");
+// }
+// function deleteData($table,$condition){
+//     return $this->connection->query("delete from $table where $condition");
+// }
+// function insertData($table,$cols,$values){
+//     return $this->connection->query("insert into $table ($cols) values ($values)");
+// }
+// function updateData($table,$cols,$condition){
+//     return $this->connection->query("update $table set $cols where $condition");
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// $queryString=$db->getData("orders.created_at AS dte
+// , users.name AS user , users.id_room as room  , orders.ext as ext" ,"orders" ,"users",
+// "orders.id_users = users.id");
+// $queryString2=$db->getData("products.name AS  products_name,
+//   products.price AS  products_price ,
+
+//      products.image  AS products_img ,  product_orders.quantity AS quantity , sum(products.price)" ,"product_orders" ,"products",
+// "products.id = product_orders.id_products");
+
+
+
+
+
+
+
+
+// $second_row=$queryString2->fetchAll(PDO::FETCH_ASSOC);
+// echo $data["dte"];
+
+// echo"<pre>";
+// var_dump($data);
+// echo"</pre>";
