@@ -218,7 +218,7 @@
                     <div class="title">
                         <div class="row">
                             <div class="col"><h4><b>Shopping Cart</b></h4></div>
-                            <div class="col align-self-center text-right text-muted">3 items</div>
+                            <div class="col align-self-center text-right text-muted" onclick="trytest();">3 items</div>
                         </div>
                     </div>    
 
@@ -290,8 +290,14 @@
 
         </div>
         <script>
-            console.log(document.getElementsByClassName('p'));
-            console.log('salmg');
+            let t=document.getElementsByClassName('p');
+            let total=0;
+            let x=0;
+            function trytest(){
+            for (let x in t){
+                total=Number(t[x].innerText)+total;
+                console.log(total);
+            }}
             function drop_products(e){
                 e.parentElement.parentElement.parentElement.remove();
 
