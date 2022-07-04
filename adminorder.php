@@ -291,7 +291,7 @@
         </div>
         <script>
             console.log(document.getElementsByClassName('p'));
-            console.log('salmgit a');
+            console.log('salmg');
             function drop_products(e){
                 e.parentElement.parentElement.parentElement.remove();
 
