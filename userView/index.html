@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafeteria</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="css/style.css">
+
+    
+    <!-- Bootstrap CDN link  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">    
+
+
+</head>
+
+<body>
+
+    <!-- header section starts  -->
+
+    <header class="header">
+
+        <nav class="navbar navbar-expand-lg bg-light fixed-top d-flex justify-content-around">
+            <div class="container-fluid">
+                    <a class="navbar-brand col-1 col-lg-3 ms-5 logo" href="#">
+                        Cafeteria <i class="fas fa-mug-hot"></i>
+                     </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse col-9 ms-lg-3" id="navbarNavDropdown">
+                      <ul class="navbar-nav">
+                        <li class="nav-item">
+                          <a class="nav-link" aria-current="page" href="#home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#about">About</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#menu">Menu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#review">Review</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#book">Book</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Cart <i class="fa fa-cart-plus"></i></a>
+                        </li>
+                        <li class="nav-item bookRoom">
+                            <a class="nav-link btn  d-lg-inline-block " href="#book">book a room</a>
+                        </li>
+                        <li class="nav-item dropdown d-lg-inline-block ms-lg-5">
+                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            username
+                          </a>
+                          <ul class="dropdown-menu drop" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="#"><hr></a></li>
+                            <li><a class="dropdown-item" href="#">Log Out</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+
+                      <ul></ul>
+                    </div>
+    
+            </div>
+          </nav>
+
+    </header>
+
+    <!-- header section ends -->
+
+    <!-- home section starts  -->
+
+    <section class="home" id="home">
+
+        <div class="row">
+            <div class="content">
+                <h3>fresh coffee in the morning</h3>
+                <a href="#menu" class="btn">buy one now</a>
+            </div>
+
+            <div class="image">
+                <img src="image/home-img-1.png" class="main-home-image" alt="">
+            </div>
+
+        </div>
+
+        <div class="image-slider">
+            <img src="image/home-img-1.png" alt="">
+            <img src="image/home-img-2.png" alt="">
+            <img src="image/home-img-3.png" alt="">
+        </div>
+
+    </section>
+
+    <!-- home section ends -->
+
+    <!-- about section starts  -->
+
+    <section class="about" id="about">
+
+        <h1 class="heading"> about us <span>why choose us</span> </h1>
+
+        <div class="row">
+            <div class="image">
+                <img src="image/about-img.png" alt="">
+            </div>
+
+            <div class="content">
+                <h3 class="title">what's make our coffee special!</h3>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse et commodi, ad, doloremque obcaecati maxime quam minima dolore mollitia saepe quos, debitis incidunt. Itaque possimus adipisci ipsam harum at autem.</p>
+                <a href="#" class="btn">read more</a>
+                <div class="icons-container">
+                    <div class="icons">
+                        <img src="image/about-icon-1.png" alt="">
+                        <h3>quality coffee</h3>
+                    </div>
+                    <div class="icons">
+                        <img src="image/about-icon-2.png" alt="">
+                        <h3>our branches</h3>
+                    </div>
+                    <div class="icons">
+                        <img src="image/about-icon-3.png" alt="">
+                        <h3>free delivery</h3>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- about section ends -->
+
+    <!-- menu section starts  -->
+
+    <section class="menu" id="menu">
+
+        <h1 class="heading"> our menu <span>popular menu</span> </h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-6 parent">
+                    <form action="">
+                        <a href="#" class="box">
+                            <img src="image/menu-1.png" alt="">
+                            <div class="content">
+                                <h3>our special coffee</h3>
+                                <span>$8.99</span>
+                            </div>
+                        </a>
+                        <button class="btn" type="submit" name="addToCart">Add To Cart</button>
+                    </form>
+
+                </div>
+                <div class="col-12 col-lg-6 parent">
+                    <form action="">
+                        <a href="#" class="box">
+                            <img src="image/menu-1.png" alt="">
+                            <div class="content">
+                                <h3>our special coffee</h3>
+                                <span>$8.99</span>
+                            </div>
+                        </a>
+                        <button class="btn" type="submit" name="addToCart">Add To Cart</button>
+                    </form>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-lg-6 parent">
+                    <form action="">
+                        <a href="#" class="box">
+                            <img src="image/menu-1.png" alt="">
+                            <div class="content">
+                                <h3>our special coffee</h3>
+                                <span>$8.99</span>
+                            </div>
+                        </a>
+                        <button class="btn" type="submit" name="addToCart">Add To Cart</button>
+                    </form>
+
+                </div>
+                <div class="col-12 col-lg-6 parent">
+                    <form action="">
+                        <a href="#" class="box">
+                            <img src="image/menu-1.png" alt="">
+                            <div class="content">
+                                <h3>our special coffee</h3>
+                                <span>$8.99</span>
+                            </div>
+                        </a>
+                        <button class="btn" type="submit" name="addToCart">Add To Cart</button>
+                    </form>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-lg-6 parent">
+                    <form action="#">
+                        <a href="#" class="box">
+                            <img src="image/menu-1.png" alt="">
+                            <div class="content">
+                                <h3>our special coffee</h3>
+                                <span>$8.99</span>
+                            </div>
+                        </a>
+                        <button class="btn" type="submit" name="addToCart">Add To Cart</button>
+                    </form>
+
+                </div>
+                <div class="col-12 col-lg-6 parent">
+                    <form action="">
+                        <a href="#" class="box">
+                            <img src="image/menu-1.png" alt="">
+                            <div class="content">
+                                <h3>our special coffee</h3>
+                                <span>$8.99</span>
+                            </div>
+                        </a>
+                        <button class="btn" type="submit" name="addToCart">Add To Cart</button>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </section>
+
+    <!-- menu section ends -->
+
+    <!-- review section starts  -->
+
+    <section class="review" id="review">
+
+        <h1 class="heading"> reviews <span>what people says</span> </h1>
+
+        
+        <div class="swiper review-slider">
+
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide box">
+                    <i class="fas fa-quote-left"></i>
+                    <i class="fas fa-quote-right"></i>
+                    <img src="image/pic-1.png" alt="">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore aliquid eveniet qui, similique aut sit.</p>
+                    <h3>Alaa Ali</h3>
+                </div>
+
+                <div class="swiper-slide box">
+                    <i class="fas fa-quote-left"></i>
+                    <i class="fas fa-quote-right"></i>
+                    <img src="image/pic-2.png" alt="">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore aliquid eveniet qui, similique aut sit.</p>
+                    <h3>Hana Hamza</h3>
+                </div>
+
+                <div class="swiper-slide box">
+                    <i class="fas fa-quote-left"></i>
+                    <i class="fas fa-quote-right"></i>
+                    <img src="image/pic-3.png" alt="">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore aliquid eveniet qui, similique aut sit.</p>
+                    <h3>Ahmed Yasser</h3>
+                </div>
+
+                <div class="swiper-slide box">
+                    <i class="fas fa-quote-left"></i>
+                    <i class="fas fa-quote-right"></i>
+                    <img src="image/pic-4.png" alt="">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore aliquid eveniet qui, similique aut sit.</p>
+                    <h3>Sara Rezk</h3>
+                </div>
+
+            </div>
+
+            <div class="swiper-pagination"></div>
+
+        </div>
+
+    </section>
+
+    <!-- review section ends -->
+
+    <!-- book section starts  -->
+
+    <section class="book" id="book">
+
+        <h1 class="heading"> booking <span>reserve a room</span> </h1>
+
+        <form action="">
+
+            <input type="text" placeholder="your name" class="box">
+            <input type="email" placeholder="your email" class="box">
+            <input type="number" placeholder="your room number" class="box">
+
+            <textarea name="" placeholder="your message" class="box" id="" cols="30" rows="10"></textarea>
+
+            <input type="submit" value="send message" class="btn">
+
+        </form>
+
+    </section>
+
+    <!-- book section ends -->
+
+    <!-- footer section starts  -->
+
+    <section class="footer">
+
+        <div class="box-container">
+
+            <div class="box">
+                <h3>our branches</h3>
+                <a href="#"> <i class="fas fa-arrow-right"></i> Cairo </a>
+                <a href="#"> <i class="fas fa-arrow-right"></i> Alex </a>
+                <a href="#"> <i class="fas fa-arrow-right"></i> Mansoura </a>
+                <a href="#"> <i class="fas fa-arrow-right"></i> Zagzig </a>
+                <a href="#"> <i class="fas fa-arrow-right"></i> Giza </a>
+            </div>
+
+            <div class="box">
+                <h3>quick links</h3>
+                <a href="#home"> <i class="fas fa-arrow-right"></i> home </a>
+                <a href="#about"> <i class="fas fa-arrow-right"></i> about </a>
+                <a href="#manu"> <i class="fas fa-arrow-right"></i> menu </a>
+                <a href="#review"> <i class="fas fa-arrow-right"></i> review </a>
+                <a href="#book"> <i class="fas fa-arrow-right"></i> book </a>
+                <a href="#"> <i class="fas fa-arrow-right"></i> Cart</a>
+
+            </div>
+
+            <div class="box">
+                <h3>contact info</h3>
+                <a href="#"> <i class="fas fa-phone"></i> +123-456-7890 </a>
+                <a href="#"> <i class="fas fa-phone"></i> +111-222-3333 </a>
+                <a href="#"> <i class="fas fa-envelope"></i> muhammed@gmail.com </a>
+                <a href="#"> <i class="fas fa-envelope"></i> Cairo, Egypt = 400104 </a>
+            </div>
+
+            <div class="box">
+                <h3>contact info</h3>
+                <a href="#"> <i class="fab fa-facebook-f"></i> facebook </a>
+                <a href="#"> <i class="fab fa-twitter"></i> twitter </a>
+                <a href="#"> <i class="fab fa-twitter"></i> twitter </a>
+                <a href="#"> <i class="fab fa-instagram"></i> instagram </a>
+                <a href="#"> <i class="fab fa-linkedin"></i> linkedin </a>
+            </div>
+
+        </div>
+
+        <div class="credit"> created by <span>Kings Team</span> | all rights reserved </div>
+
+    </section>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- footer section ends -->
+
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+    <!-- custom js file link  -->
+    <script src="js/script.js"></script>
+
+
+
+</body>
+
+</html>
