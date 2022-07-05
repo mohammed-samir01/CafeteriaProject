@@ -1,30 +1,44 @@
 <?php 
-    $connect = new pdo("mysql:host=localhost;dbname=test", "root", "");
+    
+$host = 'sql8.freesqldatabase.com';
+$dbname = 'sql8504061';
+$user = 'sql8504061';
+$pass = 'jXp9bj23mh';
+
+try {
+    $conn = new PDO("mysql:host=$host;dbname=$dbname", "$user", "$pass");
+    $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $user_id=$_GET['user_id'];
     unset($_GET['user_id']);
         $total_price = 0;
-        $connect = new pdo("mysql:host=localhost;dbname=test", "root", "");
         foreach($_GET as $k){
-            $select = $connect->query("select id, name,image,price from products where id='{$k}';");
+            $conn = new PDO("mysql:host=$host;dbname=$dbname", "$user", "$pass");
+            $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $select = $conn->query("select id, name,image,price from products where id='{$k}';");
             $r = $select->fetchAll(PDO::FETCH_ASSOC);
                 foreach ($r as $key) {
                     $total_price += $key['price'];
-                    echo "<div class='row border-top border-bottom {$k}'>
+                    echo "<div class='row border-top border-bottom '>
                             <input type='text' hidden value='{$user_id}' name='user_id'>
                             <div class='row main align-items-center'>
                             <div class='col-2'><img class='img-fluid' src='public/images/{$key["image"]}'></div>
                             <div class='col'>
                             <div class='row text-muted'>{$key['name']}</div>
                             </div>
-                            <div class='col-2 align-items-center'>
-                            <input type='text' name='product[{$k}]['id']' value='{$k}' hidden>
-                            <input type='number' name='product[{$k}]['quantity']' value='1' step='1' min='1' >
+                            <div class='col-2 align-items-center' id='$k'>
+                            <i class='fa-solid fa-plus' onclick='plus(this);'></i>
+                            <input class='$k innervalue' type='text' name='product[{$k}]' value='1' step='1' min='1' >
+                            <i class='fa-solid fa-minus' onclick='min(this);'></i>
                             </div>
                             <form method='post' action='#'>
-                            <div class='col'>&euro;<span class='p'> {$key['price']} </span><button type='button' class='close {$k}' onclick='drop_products(this);'>&#10005;</button></div></form>
+                            <div class='col'>&euro;<span class='uni $k'>{$key['price']}</span><button type='button' class='close {$k}' onclick='drop_products(this);'>&#10005;</button></div></form>
                         </div>
                     </div>";}}; 
-?>
+                } catch (PDOException $ex) {
+
+                    echo $ex->getMessage();
+                
+                  }?>
 
 
 

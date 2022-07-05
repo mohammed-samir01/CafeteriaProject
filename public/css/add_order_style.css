@@ -61,3 +61,6 @@ body {
 
   
 .comedy input:checked + span{background-color: #1BB8F7;}
+.fa-solid{
+  cursor: pointer;
+}

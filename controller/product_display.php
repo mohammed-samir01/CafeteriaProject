@@ -1,8 +1,16 @@
 <?php
-                    $connect = new pdo("mysql:host=localhost;dbname=test", "root", "");
+
+$host = 'sql8.freesqldatabase.com';
+$dbname = 'sql8504061';
+$user = 'sql8504061';
+$pass = 'jXp9bj23mh';
+
+try {
+    $conn = new PDO("mysql:host=$host;dbname=$dbname", "$user", "$pass");
+    $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                     if (isset($_GET['name'])) {
                         $name = $_GET['name'];
-                        $result = $connect->query("select id, name,image from products where name='{$name}';");
+                        $result = $conn->query("select id, name,image from products where name='{$name}';");
                         $result = $result->fetchAll(PDO::FETCH_ASSOC);
                         $x=0;
                         $p='product';
@@ -22,7 +30,7 @@
                         }
                         }
                         elseif(isset($_GET['all'])){
-                            $result=$connect->query("select id, name,image from products;");
+                            $result=$conn->query("select id, name,image from products;");
                             $result=$result->fetchAll(PDO::FETCH_ASSOC);
                             $x=0;
                             $p='product';
@@ -42,7 +50,7 @@
                         }
                         else
                          {
-                            $result=$connect->query("select id, name,image from products;");
+                            $result=$conn->query("select id, name,image from products;");
                             $result=$result->fetchAll(PDO::FETCH_ASSOC);
                             $x=0;
                             $p='product';
@@ -60,4 +68,8 @@
                                         </div>
                                         </div></div>";
                         }} 
-                    ?>
+                    } catch (PDOException $ex) {
+
+                        echo $ex->getMessage();
+                    
+                      }?>

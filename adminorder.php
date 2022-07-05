@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- JQVMap -->
     <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
     <!-- Theme style -->
@@ -260,7 +261,7 @@
                     
                     <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
                         <div class="col">TOTAL PRICE</div>
-                        <div class="col text-right">&euro; </div>
+                        <div class="col text-right" id="buggs">0</div>
                     </div>
                     <button type="submit" class="btn bg-primary">ORDER</button>
                 </div>
@@ -290,18 +291,51 @@
 
         </div>
         <script>
+                let v= document.getElementById('buggs').innerText;
+            v=Number(v);
+            for (let i = 0; i < document.getElementsByClassName('uni').length; i++) {
+                v+=Number(document.getElementsByClassName('uni')[i].innerText);
+                document.getElementById('buggs').innerText=v;
+            }
+        
+            
+            
             let t=document.getElementsByClassName('p');
             let total=0;
             let x=0;
-            function trytest(){
-            for (let x in t){
-                total=Number(t[x].innerText)+total;
-                console.log(total);
-            }}
             function drop_products(e){
                 e.parentElement.parentElement.parentElement.remove();
 
            }
+            function plus(p){
+                let id=p.parentElement.id;
+                let q=document.getElementsByClassName(id)[0];
+                q.value++;
+                const xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                document.getElementsByClassName(id)[1].innerHTML =
+                this.responseText;
+                }
+                };
+                xhttp.open("POST", "controller/price_cart_update.php");
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send("id="+id+"&"+"q="+q.value); 
+            }/************************************************** */
+             function min(p){
+                let id=p.parentElement.id;
+                let q=document.getElementsByClassName(id)[0];
+                q.value--;
+                const xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                document.getElementsByClassName(id)[1].innerHTML =
+                this.responseText;
+                }
+                };
+                xhttp.open("POST", "controller/price_cart_update.php");
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send("id="+id+"&"+"q="+q.value); }
         </script>
         <!-- jQuery -->
         <script src="plugins/jquery/jquery.min.js"></script>
