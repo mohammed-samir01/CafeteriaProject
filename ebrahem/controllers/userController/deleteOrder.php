@@ -28,7 +28,5 @@
      $stm->setFetchMode(PDO::FETCH_ASSOC);   //delete the repeat
      $users = $stm->fetchAll();
      $jUsers = json_encode($users);
-     $jFile = fopen("user.json", "w");
-     fwrite($jFile,$jUsers);
-     header("location:../../resources/views/checksUser.php");
+     header("location:../../resources/views/checksUser.php?users=$jUsers");
 ?>

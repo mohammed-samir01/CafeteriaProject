@@ -132,16 +132,13 @@
                     $stm->execute();
                     $stm->setFetchMode(PDO::FETCH_ASSOC);   //delete the repeat
                     $users = $stm->fetchAll();   //get array form pdo object
-                    // $jUsers = json_encode($users);
-                    // $jFile = fopen("user.json", "w");
-                    // fwrite($jFile,$jUsers);
                     
                     //select date from order table
-                    // $sql = "select created_at from orders";
-                    // $stm = $conn->prepare($sql);
-                    // $stm->execute();
-                    // $stm->setFetchMode(PDO::FETCH_ASSOC);   //delete the repeat
-                    // $dates = $stm->fetchAll();   //get array form pdo object
+                    $sql = "select distinct created_at from orders";
+                    $stm = $conn->prepare($sql);
+                    $stm->execute();
+                    $stm->setFetchMode(PDO::FETCH_ASSOC);   //delete the repeat
+                    $orders = $stm->fetchAll();   //get array form pdo object
                 ?>
 
 
@@ -160,35 +157,26 @@
 
 
                          <!-- date from -->
-                    <select name="dateFrom">
-                        <option disabled selected> date from</option>
-                        <option > 2022-07-01</option>
-                        <option > 2022-07-02</option>
-                        <option > 2022-07-03</option>
-                        <option > 2022-07-04</option>
-                        <option > 2022-07-05</option>
-                        <option > 2022-07-06</option>
-                        <option > 2022-07-07</option>
-                        <option > 2022-07-08</option>
-                        <option > 2022-07-09</option>
-                        <option > 2022-07-10</option>
-                    </select>
+                         <select name="dateFrom">
+                            <option disabled selected> DATE FROM </option>
+                                <?php 
+                                        foreach ($orders as $order) {
+                                            echo "<option value=".$order['created_at'].">".$order['created_at']."</option>";
+                                        }
+                                ?> 
+                         </select>
 
                     
                      <!-- date to -->
-                    <select name="dateTo">
-                        <option disabled selected> date to</option>
-                        <option > 2022-07-01</option>
-                        <option > 2022-07-02</option>
-                        <option > 2022-07-03</option>
-                        <option > 2022-07-04</option>
-                        <option > 2022-07-05</option>
-                        <option > 2022-07-06</option>
-                        <option > 2022-07-07</option>
-                        <option > 2022-07-08</option>
-                        <option > 2022-07-09</option>
-                        <option > 2022-07-10</option>
+                     <select name="dateTo">
+                        <option disabled selected> DATE To </option>
+                            <?php 
+                                    foreach ($orders as $order) {
+                                        echo "<option value=".$order['created_at'].">".$order['created_at']."</option>";
+                                    }
+                            ?> 
                     </select>
+
 
 
                     <!-- select user -->
@@ -219,30 +207,7 @@
                     ?>
                 </h3>
                     
-
-
-                    <!-- users table -->
-                    <label> user table </label>
-                    <table class="table table-striped table-dark mt-2 ">
-                            
-                                
-                             <thead scope="col"> 
-                                    <tr>
-                                         <td> 
-                                             Name 
-                                         </td> 
-                                    <tr>
-
-                                </thead>
-
-                                <tbody class="userTable">
-                                    
-                                </tbody>
-                            
-                            
-                    </table>
-
-                    <br> <br>
+                <br> <br>
 
 
                     <label> orders table </label>
@@ -269,13 +234,29 @@
                                 </thead>
 
                                 <tbody class="orderTable">
+                                    <?php  
+                                        if(isset($_GET['users'])){
+                                        $users = json_decode($_GET['users'],true);
+                                        $total = 0;
                                     
+                                        foreach ($users as $user) {
+                                            echo "<tr>"."<td>".$user['created_at']."</td>"."<td>".$user['name']."</td>"."<td>".$user['TOTAL']."</td>"."</tr>";
+                                            $GLOBALS['total'] += $user['TOTAL'];
+                                        }   
+                                        
+                                    }
+                                    ?> 
+
                                 </tbody>
 
-
-                            
-                            
                     </table>
+
+                    <?php
+                    if(isset($_GET['users'])){
+                          echo  "TOTAL = " .$total;
+                    }
+                    
+                    ?>
 
 
                
@@ -326,30 +307,11 @@
             <script src="../../public/assets/dist/js/demo.js"></script>
             <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
             <script src="../../public/assets/dist/js/pages/dashboard.js"></script>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+            
 
 
 
-
-        <script >
-
-           $(document).ready(function(){
-
-                   $.ajax({
-                           url: "../../controllers/adminController/user.json",
-                           type : 'get',
-                           success: function(data){
-                               $(".userTable").empty();
-                               $.each(data,function(key,value){
-                                   $(".userTable").append("<tr>"+"<td>"+value['name']+"</td>"+"</tr>");
-                                   $(".orderTable").append("<tr>"+"<td>"+value['created_at']+"</td>"+"<td>"+ value['name']+"</td>"+"<td>"+ value['TOTAL']+"</td>"+"</tr>");
-                               });
-
-                            }    
-                    });       
-
-            });
-       </script>
+        
                 
            
 

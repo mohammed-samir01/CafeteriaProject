@@ -53,48 +53,58 @@
 
             <!-- orders table and select -->
             <div class="content">
+
+            <?php
+            //data for connection
+            $servername = "localhost";
+            $username = "root";
+            $pass = "";
+            $dbname = "cafeteria";
+
+            //database connection
+            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $pass);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            $sql = "select distinct created_at from orders";
+            $stm = $conn->prepare($sql);
+            $stm->execute();
+            $stm->setFetchMode(PDO::FETCH_ASSOC);   //delete the repeat
+            $orders = $stm->fetchAll();
+            // var_dump($orders);
+
+            ?>
+
+
+
+
                 <form action="../../controllers/userController/checkController.php"  method="get">
-
-
 
                     <!-- date from -->
                     <select name="dateFrom">
-                        <option disabled selected> date from</option>
-                        <option > 2022-07-01</option>
-                        <option > 2022-07-02</option>
-                        <option > 2022-07-03</option>
-                        <option > 2022-07-04</option>
-                        <option > 2022-07-05</option>
-                        <option > 2022-07-06</option>
-                        <option > 2022-07-07</option>
-                        <option > 2022-07-08</option>
-                        <option > 2022-07-09</option>
-                        <option > 2022-07-10</option>
+                        <option disabled selected> DATE FROM </option>
+                    <?php 
+                            foreach ($orders as $order) {
+                                echo "<option value=".$order['created_at'].">".$order['created_at']."</option>";
+                            }
+                    ?> 
                     </select>
 
 
                     <!-- date to -->
                     <select name="dateTo">
-                        <option disabled selected> date to</option>
-                        <option > 2022-07-01</option>
-                        <option > 2022-07-02</option>
-                        <option > 2022-07-03</option>
-                        <option > 2022-07-04</option>
-                        <option > 2022-07-05</option>
-                        <option > 2022-07-06</option>
-                        <option > 2022-07-07</option>
-                        <option > 2022-07-08</option>
-                        <option > 2022-07-09</option>
-                        <option > 2022-07-10</option>
+                        <option disabled selected> DATE To </option>
+                    <?php 
+                            foreach ($orders as $order) {
+                                echo "<option value=".$order['created_at'].">".$order['created_at']."</option>";
+                            }
+                    ?> 
                     </select>
 
                     <input type="submit" value="filter">
 
                 </form>
                
-            </div>
-
-
+                </div>
                     <table class="table table-striped table-dark mt-2">
                             
                                 
@@ -102,10 +112,6 @@
                                     <tr>
                                          <td> 
                                              Order date 
-                                         </td> 
-
-                                         <td> 
-                                             Name 
                                          </td> 
 
                                          <td> 
@@ -128,22 +134,30 @@
                                 </thead>
 
                                 <tbody class="orderTable">
+                                <?php 
+
+                                if(isset($_GET['users'])){
+                                    $users = json_decode($_GET['users'],true);
+                                    $total = 0;
+                                   
+                                    foreach ($users as $user) {
+                                        echo "<tr>"."<td>".$user['created_at']."</td>"."<td>".$user['order_status']."</td>"."<td>".$user['TOTAL']."</td>"."<td>". "<a href='../../controllers/userController/deleteOrder.php?order_id=".$user['id']."'". ">" .$user['action']. "</a>"."</td>"."</tr>";
+                                         $GLOBALS['total'] += $user['TOTAL'];
+                                    }   
+                                }
+                                ?> 
                                     
                                 </tbody>
+                                
                                   
                     </table>
 
-                    <label for="total"> TOTAL  =  </label>
-                    <h3 style="display:inline"id ="total" class="total"> </h3>
-
-
-
-
-
-
-
-
-
+                    <?php
+                    if(isset($_GET['users'])){
+                         echo  "TOTAL = " .$total ;
+                    }
+                    ?>
+                   
 
 
 
@@ -241,35 +255,9 @@
     <!-- custom js file link  -->
     <script src="../js/script.js"></script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 
-    <script >
-        var total = 0;
-           $(document).ready(function(){
-                 
-                   $.ajax({
-                           url: "../../controllers/userController/user.json",
-                           type : 'get',
-                           success: function(data){
-                               $(".orderTable").empty();
-                               
-                               $.each(data,function(key,value){
-                                   $(".orderTable").append("<tr>"+"<td>"+value['created_at']+"</td>"+"<td>"+ value['name']+"<td>"+ value['order_status']+"</td>"+"<td>"+ value['TOTAL']+"</td>"+"<td>"+ "<a href='../../controllers/userController/deleteOrder.php?order_id="+value['id']+"'"+ ">" + value['action']+ "</a>"+"</td>"+"</tr>");
-                                   window.total  += parseInt(value['TOTAL']);
-                                   $(".total").text(window.total);
-                                
-                               });
-
-                            }    
-                    });       
-
-            });
-
-            $(".total").text(window.total);
-       </script>
-
-
+    
 
 </body>
 
