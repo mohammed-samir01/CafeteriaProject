@@ -141,7 +141,12 @@
                                     $total = 0;
                                    
                                     foreach ($users as $user) {
-                                        echo "<tr>"."<td>".$user['created_at']."</td>"."<td>".$user['order_status']."</td>"."<td>".$user['TOTAL']."</td>"."<td>". "<a href='../../controllers/userController/deleteOrder.php?order_id=".$user['id']."'". ">" .$user['action']. "</a>"."</td>"."</tr>";
+                                        // echo "<tr>"."<td>".$user['created_at']."</td>"."<td>".$user['order_status']."</td>"."<td>".$user['TOTAL']."</td>"."<td>". "<a href='../../controllers/userController/deleteOrder.php?order_id=".$user['id']."'". ">" .$user['action']. "</a>"."</td>"."</tr>";
+                                        echo "<tr>"."<td>".$user['created_at']."</td>"."<td>".$user['order_status']."</td>"."<td>".$user['TOTAL']."</td>"."<td>";
+                                        echo $user['order_status']=="processing" ? "<a href='../../controllers/userController/deleteOrder.php?order_id=".$user['id']."'". ">"."CANCEL"."</a> </td> </tr>":"</td> </tr>";
+
+                                        
+                                        
                                          $GLOBALS['total'] += $user['TOTAL'];
                                     }   
                                 }

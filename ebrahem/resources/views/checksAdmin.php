@@ -214,7 +214,7 @@
                     <table class="table table-striped table-dark mt-2 ">
                             
                                 
-                                <thead scope="col"> 
+                                <!-- <thead scope="col"> 
                                     <tr>
                                          <td> 
                                              Order date 
@@ -231,32 +231,83 @@
 
                                     
 
-                                </thead>
+                                </thead> -->
 
                                 <tbody class="orderTable">
                                     <?php  
+
+                                        
+
+
                                         if(isset($_GET['users'])){
                                         $users = json_decode($_GET['users'],true);
-                                        $total = 0;
-                                    
-                                        foreach ($users as $user) {
-                                            echo "<tr>"."<td>".$user['created_at']."</td>"."<td>".$user['name']."</td>"."<td>".$user['TOTAL']."</td>"."</tr>";
-                                            $GLOBALS['total'] += $user['TOTAL'];
-                                        }   
+                                        // $total = 0;
+                                        // echo "<pre>";
+                                        // var_dump($users);
+                                        // echo "</pre>";
+
+                                        // var_dump($users);
+                                         //database connection
+                                         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $pass);
+                                         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+ 
+                                         //get the selected user
+                                         $sql = "select * from orders ";
+                                         $stm = $conn->prepare($sql);
+                                         $stm->execute();
+                                         $stm->setFetchMode(PDO::FETCH_ASSOC);   //delete the repeat
+                                         $orders = $stm->fetchAll();
+                                            
+
+
+
+                                         foreach($orders as $order){
+
+
+                                            $current_order_details_rows = array_filter($users,
+                                            fn($order_product)  =>  $order_product['id_orders'] == $order['id'] );
+
+                                            // echo "<pre>";
+                                            // var_dump( $current_order_details_rows);
+                                            // echo "</pre>";
+                                            
+
+                                            echo "<tr>";
+                                            foreach($current_order_details_rows as $current_order_details_row){
+                                                echo "<td>";
+
+                                                // var_dump($current_order_details_rows);
+
+                                                    echo "ORDER NUMBER : ".$current_order_details_row['id_orders']."<br>";
+                                                    echo "customerName : ".$current_order_details_row['userName']."<br>";
+                                                    echo "orderDate : ".$current_order_details_row['created_at']."<br>";
+                                                    echo "product : ".$current_order_details_row['productName']."<br>";
+                                                    echo "Price : ".$current_order_details_row['price']."<br>";
+                                                    echo "Quantitiy : ".$current_order_details_row['quantity']."<br>";
+                                                    echo "TotalPrice : ".$current_order_details_row['TOTAL']."<br>";
+
+
+
+
+
+                                               echo "</td>";
+                                            }
+                                            echo "</tr>";
+                                         }
+
+                                        // foreach ($users as $user) {
+                                        //     echo "<tr>"."<td>".$user['created_at']."</td>"."<td>".$user['name']."</td>"."<td>".$user['TOTAL']."</td>"."</tr>";
+                                        //     $GLOBALS['total'] += $user['TOTAL'];
+                                        // }   
                                         
-                                    }
+                                        }
                                     ?> 
 
                                 </tbody>
 
                     </table>
 
-                    <?php
-                    if(isset($_GET['users'])){
-                          echo  "TOTAL = " .$total;
-                    }
-                    
-                    ?>
+                   
 
 
                

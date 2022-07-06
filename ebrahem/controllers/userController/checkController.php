@@ -1,7 +1,7 @@
 <?php
 
     session_start();
-    $_SESSION['id'] =5 ;
+    $_SESSION['id'] =2 ;
 
 
      //data for connection
@@ -37,7 +37,7 @@
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         //get the selected user
-        $sql = "select orders.id ,orders.created_at ,orders.action ,orders.order_status, users.name , product_orders.quantity*products.price as TOTAL from orders ,users , product_orders, products  where users.id = orders.id_users AND products.id = product_orders.id_products AND orders.id = product_orders.id_orders  AND created_at BETWEEN '{$_GET['dateFrom']}' AND '{$_GET['dateTo']}' AND users.id = {$_SESSION['id']}";
+        $sql = "select orders.id ,orders.created_at ,orders.order_status, users.name , product_orders.quantity*products.price as TOTAL from orders ,users , product_orders, products  where users.id = orders.id_users AND products.id = product_orders.id_products AND orders.id = product_orders.id_orders  AND created_at BETWEEN '{$_GET['dateFrom']}' AND '{$_GET['dateTo']}' AND users.id = {$_SESSION['id']}";
         $stm = $conn->prepare($sql);
         $stm->execute();
         $stm->setFetchMode(PDO::FETCH_ASSOC);   //delete the repeat
