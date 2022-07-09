@@ -1,0 +1,643 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap');
+
+:root {
+    --main-color: #443;
+    --border-radius: 95% 4% 97% 5%/4% 94% 3% 95%;
+    --border-radius-hover: 4% 95% 6% 95%/95% 4% 92% 5%;
+    --border: .2rem solid var(--main-color);
+    --border-hover: .2rem dashed var(--main-color);
+}
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: all .2s linear;
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-padding-top: 7rem;
+    scroll-behavior: smooth;
+}
+
+section {
+    padding: 2rem 9%;
+}
+
+.heading {
+    font-size: 9rem;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: .05rem var(--main-color);
+    letter-spacing: .2rem;
+    text-align: center;
+    pointer-events: none;
+    position: relative;
+}
+
+
+
+.btn {
+    display: inline-block;
+    padding: .9rem 1.5rem;
+    border-radius: var(--border-radius);
+    color: var(--main-color);
+    background: none;
+    border: var(--border);
+    cursor: pointer;
+    margin-top: 1rem;
+    font-size: 1.7rem;
+}
+
+.btn:hover {
+    border-radius: var(--border-radius-hover);
+    border: var(--border-hover);
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    background: #fff;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+    padding: 2rem 9%;
+}
+
+.header .logo {
+    color: var(--main-color);
+    font-size: 2.3rem;
+}
+
+.header .logo i {
+    padding-left: .5rem;
+}
+
+.header .navbar a {
+    margin: 0 1rem;
+    font-size: 1.7rem;
+    color: var(--main-color);
+}
+
+.header .btn {
+    margin-top: 0;
+}
+
+#menu-btn {
+    font-size: 3rem;
+    color: var(--main-color);
+    cursor: pointer;
+    display: none;
+}
+
+.home {
+    min-height: 100vh;
+    padding: 15rem 9%;
+    background: url(../image/home-bg.jpg) no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+i{
+    cursor: pointer;
+}
+hr {
+    margin-top: 3rem;
+    height: 2px;
+    width: 100% !important;
+    border-width: 0;
+    color: gray;
+    background-color: gray
+}
+
+.home .row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.home .row .leftContent {
+    width: 70%;
+    margin: 0px auto;
+    padding: 1rem 2rem;
+    background-color: white;
+    border-bottom-left-radius: 1rem;
+    border-top-left-radius: 1rem;
+}
+
+.home .row .leftContent .cartHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.home .row .leftContent .cartHeader h3 {
+    font-size: 3.5rem;
+    color: var(--main-color);
+    text-transform: uppercase;
+}
+
+.home .row .leftContent .cartHeader h4 {
+    font-size: 2rem;
+    color: var(--main-color);
+    text-transform: uppercase;
+}
+
+.home .row .leftContent .card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 2rem;
+}
+
+.home .row .leftContent .card img {
+    margin-top: 2rem;
+    border-radius: 3rem;
+    height: 10rem;
+}
+
+.home .row .leftContent .card .info h3 {
+    color: var(--main-color);
+    text-transform: uppercase;
+}
+
+.home .row .leftContent .card .info h4 {
+    font-size: 1.8rem;
+    color: var(--main-color);
+    text-transform: uppercase;
+}
+
+.home .row .leftContent .card .quantity {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 20%;
+}
+
+.home .row .leftContent .card .quantity span {
+    border: 1px solid;
+    width: 30%;
+    text-align: center;
+}
+
+.home .row .leftContent .card .price {
+    text-align: center;
+}
+
+.home .row .leftContent .card .fa-times {
+    color: red;
+}
+
+
+.home .row .rightContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 2rem;
+    padding: 1rem 2rem;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-bottom-right-radius: 1rem;
+    border-top-right-radius: 1rem;
+    width: 30%;
+    height: 53rem;
+    color: white;
+}
+
+.home .row .rightContent hr {
+    margin-top: 3rem;
+    height: 2px;
+    width: 100% !important;
+    border-width: 0;
+    color: white;
+    background-color: white;
+}
+
+.home .row .rightContent h3 {
+    margin-top: 10px;
+    font-size: 2.5rem;
+}
+
+.home .row .rightContent .card .info {
+    padding-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.home .row .rightContent .card .shipping {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.home .row .rightContent .card .shipping label {
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.home .row .rightContent .card .shipping select {
+    padding: 1.2rem;
+}
+
+.home .row .rightContent .card .price {
+    padding-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding-bottom: 2rem;
+}
+
+
+.home .row .rightContent .card .btn {
+    color: white;
+    border: var(--border);
+    border-color: white;
+    width: 100%;
+}
+
+.home .row .rightContent .card .btn:hover {
+    border-radius: var(--border-radius-hover);
+    border: .2rem dashed white;
+}
+
+
+.footer .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(23rem, 1fr));
+    gap: 1.5rem;
+}
+
+.footer .box-container .box h3 {
+    font-size: 2.5rem;
+    padding: 1rem 0;
+    color: var(--main-color);
+}
+
+.footer .box-container .box a {
+    display: block;
+    font-size: 1.5rem;
+    padding: 1rem 0;
+    color: var(--main-color);
+}
+
+.footer .box-container .box a i {
+    padding-right: .5rem;
+}
+
+.footer .box-container .box a:hover i {
+    padding-right: 2rem;
+}
+
+.footer .credit {
+    text-align: center;
+    font-size: 2rem;
+    padding: 2rem 1rem;
+    margin-top: 1rem;
+    color: var(--main-color);
+}
+
+.footer .credit span {
+    border-bottom: var(--border-hover);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* media queries  */
+
+@media(max-width:1300px) {
+
+    html {
+        font-size: 55%;
+    }
+
+    section {
+        padding: 2rem 9%;
+    }
+
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 1000;
+        background: #fff;
+        box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+        padding: 2rem;
+    }
+
+
+    .header .logo {
+        font-size: 2.3rem;
+    }
+
+
+
+    .home .row .leftContent .cartHeader h3 {
+        font-size: 2.5rem;
+    }
+
+    .home .row .leftContent .cartHeader h4 {
+        font-size: 1.5rem;
+    }
+
+    .home .row .leftContent .card {
+        font-size: 1.7rem;
+    }
+
+    .home .row .leftContent .card img {
+        height: 7rem;
+    }
+
+
+    .home .row .rightContent {
+        font-size: 1.7rem;
+        padding: 0rem 2rem;
+        width: 30%;
+        height: 42.5rem;
+    }
+
+
+    .home .row .rightContent .card .shipping label {
+        font-size: 2rem;
+        text-transform: uppercase;
+    }
+
+    .home .row .rightContent .card .shipping select {
+        padding: 0.8rem;
+    }
+
+
+    .home .row .rightContent .card .btn {
+        margin-bottom: 1rem;
+    }
+
+}
+
+
+@media(max-width:991px) {
+
+    html {
+        font-size: 55%;
+    }
+
+    section {
+        padding: 2rem 2%;
+    }
+
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 1000;
+        background: #fff;
+        box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+        padding: 2rem;
+    }
+
+
+    .header .logo {
+        font-size: 2.3rem;
+    }
+
+    .home {
+        padding: 15rem 3% 8rem 3%;
+    }
+
+
+    .home .row .leftContent .card {
+        font-size: 1.5rem;
+    }
+
+    .home .row .leftContent .card img {
+        height: 7rem;
+    }
+
+    .home .row .leftContent .card .info h3 {
+        font-size: 1.4rem;
+    }
+
+    .home .row .leftContent .card .info h4 {
+        font-size: 1.2rem;
+    }
+
+    .home .row .leftContent .card .quantity {
+        width: 20%;
+    }
+
+    .home .row .rightContent {
+        font-size: 1.5rem;
+        padding: 0rem 1rem;
+        width: 30%;
+        height: 42.5rem;
+    }
+
+
+    .home .row .rightContent .card .shipping label {
+        font-size: 1.5rem;
+        text-transform: uppercase;
+    }
+
+    .home .row .rightContent .card .shipping select {
+        width: 100%;
+        padding: 0.5rem;
+    }
+
+    .home .row .rightContent .card .shipping select option {
+        font-size: 1.2rem;
+    }
+
+
+    .home .row .rightContent .card .btn {
+        margin-bottom: 1rem;
+    }
+
+
+
+}
+
+
+@media(max-width:768px) {
+
+    html {
+        font-size: 55%;
+    }
+
+    .header {
+        padding: 2rem;
+    }
+
+    .heading {
+        font-size: 6rem;
+    }
+
+    .heading span {
+        font-size: 2.3rem;
+    }
+
+    #menu-btn {
+        display: initial;
+    }
+
+    #menu-btn.fa-times {
+        transform: rotate(180deg);
+    }
+
+    .header .navbar {
+        position: absolute;
+        top: 99%;
+        left: 0;
+        right: 0;
+        background: #fff;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+
+    .header .navbar.active {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    }
+
+    .header .navbar a {
+        display: block;
+        font-size: 2.2rem;
+        margin: 0;
+        padding: 1.5rem 2rem;
+    }
+
+
+
+
+
+    .home {
+        padding: 15rem 0 8rem 0;
+    }
+
+    .home .row .leftContent .card {
+        font-size: 1.5rem;
+    }
+
+    .home .row .leftContent .card img {
+        height: 7rem;
+    }
+
+    .home .row .leftContent .card .info h3 {
+        font-size: 1.4rem;
+    }
+
+    .home .row .leftContent .card .info h4 {
+        font-size: 1.2rem;
+    }
+
+    .home .row .leftContent .card .quantity {
+        width: 20%;
+    }
+
+    .home .row .rightContent {
+        font-size: 1.5rem;
+        padding: 0rem 1rem;
+        width: 30%;
+        height: 42.5rem;
+    }
+
+
+    .home .row .rightContent .card .shipping label {
+        font-size: 1.5rem;
+        text-transform: uppercase;
+    }
+
+    .home .row .rightContent .card .shipping select {
+        width: 100%;
+        padding: 0.5rem;
+    }
+
+    .home .row .rightContent .card .shipping select option {
+        font-size: .9rem;
+    }
+
+
+    .home .row .rightContent .card .btn {
+        margin-bottom: 1rem;
+    }
+
+
+
+}
+
+
+@media(max-width:450px) {
+
+    html {
+        font-size: 50%;
+    }
+
+    .heading {
+        font-size: 6rem;
+    }
+
+    .heading span {
+        font-size: 2.3rem;
+    }
+
+    #menu-btn {
+        display: initial;
+    }
+
+    #menu-btn.fa-times {
+        transform: rotate(180deg);
+    }
+
+    .header .navbar {
+        position: absolute;
+        top: 99%;
+        left: 0;
+        right: 0;
+        background: #fff;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+
+    .header .navbar.active {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    }
+
+    .header .navbar a {
+        display: block;
+        font-size: 2.2rem;
+        margin: 0;
+        padding: 1.5rem 2rem;
+    }
+
+    .home .row .content .image-control .btns {
+        width: 100%;
+    }
+
+}
+
